@@ -59,20 +59,18 @@ func main() {
 		"https://news.ycombinator.com/news?p=3",
 	}
 
-	var wg sync.WaitGroup //espera que todas as goroutines terminem
-	chNoticias := make(chan Noticia) // canal para enviar as notícias extraídas
+	var wg sync.WaitGroup
+	chNoticias := make(chan Noticia)
 	fmt.Printf("A raspar %d páginas...\n", len(urls))
 
-	for _, url := range urls { // 1. Iteramos sobre as URLs que queremos raspar.
-		wg.Add(1) // 2. Incrementamos o contador do WaitGroup para cada goroutine.
-		go webScrapper(url, &wg, chNoticias) //3. Lançamos a goroutine com a palavra-chave 'go'.
+	for _, url := range urls {
+		wg.Add(1)
+		go webScrapper(url, &wg, chNoticias)
 	}
 
-	// 3. Lançamos uma goroutine especial para esperar e fechar o canal.
-	// Isto é crucial para que o nosso loop de recolha de resultados saiba quando parar.
 	go func() {
-		wg.Wait()      // Espera que todas as goroutines em wg.Add() chamem wg.Done().
-		close(chNoticias) // Fecha o canal, sinalizando que não haverá mais resultados.
+		wg.Wait()
+		close(chNoticias)
 	}()
 
 	var todasAsNoticias []Noticia
