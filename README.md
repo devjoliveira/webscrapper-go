@@ -1,11 +1,13 @@
-# Web Scraper Concorrente em Go para Hacker News
+# Web Scraper Concorrente em Go
 
 ![Go Version](https://img.shields.io/badge/Go-1.18%2B-blue.svg)
 ![License](https://img.shields.io/badge/License-MIT-green.svg)
 
 ## 📖 Sobre o Projeto
 
-Este projeto é um web scraper desenvolvido em Go como um exercício prático de programação. O objetivo é extrair de forma concorrente os títulos e links das notícias das primeiras páginas do **Hacker News** (`news.ycombinator.com`).
+Este projeto é um web scraper desenvolvido em Go como um exercício prático de programação. 
+
+O objetivo é extrair de forma concorrente os títulos e links das notícias das primeiras páginas do **Hacker News** (`news.ycombinator.com`).
 
 O projeto serve como um estudo de caso para aplicar conceitos fundamentais e avançados de Go, demonstrando o poder da linguagem para tarefas de rede e processamento de dados em paralelo.
 
